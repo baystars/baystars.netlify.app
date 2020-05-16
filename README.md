@@ -50,7 +50,7 @@ tree .
 
 Githubと連携し、以下を設定
 
-* Build command: make
+* Build command: make build
 * Publish directory: docs
 
 ## リンク
