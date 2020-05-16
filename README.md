@@ -1,8 +1,13 @@
 # blog-distill
 
+## 設定
+
+* github pagesでの利用も配慮し出力先をpublicからdocsに変更(各ソース参照)
+* 後述createsuperuserも実施
+
 ## 使い方
 
-admin site(default blogadmin.sqlite3)
+admin site
 
 ```
 http://localhost:8000
@@ -11,7 +16,7 @@ http://localhost:8000
 * username: blogadmin
 * password: blogadmin
 
-> createsupserでいいと思う
+> createsuperuserで新規作成し上記は削除(削除前に投稿者を変更しておくこと)
 
 ```shell
 tree .
@@ -40,6 +45,13 @@ tree .
 ├── runtime.txt
 └── static
 ```
+
+## Netlifyとの連携
+
+Githubと連携し、以下を設定
+
+* Build command: make
+* Publish directory: docs
 
 ## リンク
 
