@@ -1,5 +1,8 @@
 # blog-distill
 
+* Djangoから吐き出した静的コンテンツをnetlifyで公開できるが、コンテンツ作成のためにDjangoを別サーバで運用させておく必要がある
+* そのためHugoなどに比べるとやや手間がかかる
+
 ## 設定
 
 * github pagesでの利用も配慮し出力先をpublicからdocsに変更(各ソース参照)

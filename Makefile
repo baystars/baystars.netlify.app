@@ -15,42 +15,45 @@ ifneq ("$(wildcard ./.env)","")
 endif
 
 run: ## Run server
-	python manage.py runserver '0.0.0.0:8000'
+	@python manage.py runserver '0.0.0.0:8000'
 
 shell: ## Start shell
-	python manage.py shell
+	@python manage.py shell
 
 createsuperuser: ## Create superuser
-	python manage.py createsuperuser
+	@python manage.py createsuperuser
 
-collectstatic: ## Collect static file
-	python manage.py collectstatic --noinput
+collectstatic: ## Collect static files
+	@python manage.py collectstatic --noinput
 
 migration: ## Make migration
-	python manage.py makemigrations
-	python manage.py migrate
+	@python manage.py makemigrations
+	@python manage.py migrate
 
-build:
-	mkdir -p ${BUILD_DIR} ${STATIC_DIR}
-	python manage.py collectstatic --noinput
-	python manage.py distill-local --force ${BUILD_DIR}
+build: ## Build static files
+	@mkdir -p ${BUILD_DIR} ${STATIC_DIR}
+	@python manage.py collectstatic --noinput
+	@python manage.py distill-local --force ${BUILD_DIR}
 
-clean:
-	rm -rf ${BUILD_DIR} ${STATIC_DIR}
+clean: ## Clean output files
+	@rm -rf ${BUILD_DIR} ${STATIC_DIR}
 
-publish: clean build
+publish: clean build ## Publish
 
-test:
-	python manage.py test
+deploy: publish ## Deploy
+	@sh deploy.sh
 
-test-v2:
-	python manage.py test --verbosity=2
+test: ## Test
+	@python manage.py test
 
-test-v3:
-	python manage.py test --verbosity=3
+test-v2: ## Test v2
+	@python manage.py test --verbosity=2
+
+test-v3: ## Test v3
+	@python manage.py test --verbosity=3
 
 pip: ## Install librasy by pip
-	pip install -r requirements.txt
+	@pip install -r requirements.txt
 
 help: ## Print this help
 	@echo 'Usage: make [target]'
