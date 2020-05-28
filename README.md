@@ -43,7 +43,7 @@ tree .
 │   └── wsgi.py
 ├── demoblog.sqlite3
 ├── manage.py
-├── public
+├── docs
 ├── requirements.txt
 ├── runtime.txt
 └── static
